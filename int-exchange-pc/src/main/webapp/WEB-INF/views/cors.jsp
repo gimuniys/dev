@@ -14,10 +14,10 @@ $(function () {
     $.ajax("http://localhost:81/test")
         .done(function(msg){
 
-            var result = msg.result;
+            var userList = msg.userList;
     		var text = "";
-    		for(var i=0; i<result.length; i++){
-				text += "아이디 : " + result[i].userId + ", 이름 : " + result[i].userName + "<br>";	
+    		for(var i=0; i<userList.length; i++){
+				text += "아이디 : " + userList[i].userId + ", 이름 : " + userList[i].userName + "<br>";	
        		}
 
 			alert("success!!!");
