@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.gmail.gimuniys.util.Constant;
 import com.gmail.gimuniys.util.HttpUsageCall;
 import com.google.gson.JsonObject;
 
@@ -26,13 +27,10 @@ public class HomeController {
 
 	@RequestMapping(value="/client")
 	public String httpClient(Model model) {
-		//HttpUsageCall.get("http://localhost:81/test");
 		
 		Map<String, Object> map = new HashMap<>();
-		map.put("test", "테스트중입니다.");
-		
-		JsonObject postResult = HttpUsageCall.post("http://localhost:81/test", map);
-		//if(postResult.isJsonNull("result"))
+		map.put("test", Constant.TEST_TEXT);
+		JsonObject postResult = HttpUsageCall.post(Constant.getApiServer()+"/test", map);
 		model.addAttribute("result", postResult);
 		
 		return "httpClient";
